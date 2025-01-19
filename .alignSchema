@@ -1,0 +1,128 @@
+$schema: 
+type: "object"
+properties:
+  metadata:
+    type: "object"
+    properties:
+      agent_name:
+        type: "string"
+      version:
+        type: "string"
+        pattern: "^[0-9]+\\.[0-9]+$"
+      created_by:
+        type: "string"
+      last_updated:
+        type: "string"
+        format: "date-time"
+      description:
+        type: "string"
+      did:
+        type: "string"
+        pattern: "^did:[a-z0-9]+:[a-zA-Z0-9.-]+$"
+      owner_email:
+        type: "string"
+        format: "email"
+    required:
+      - agent_name
+      - version
+      - did
+      - owner_email
+
+  purpose_and_scope:
+    type: "object"
+    properties:
+      purpose:
+        type: "string"
+      scope:
+        type: "object"
+        properties:
+          allowed_tasks:
+            type: "array"
+            items:
+              type: "string"
+          prohibited_tasks:
+            type: "array"
+            items:
+              type: "string"
+        required:
+          - allowed_tasks
+          - prohibited_tasks
+    required:
+      - purpose
+      - scope
+
+  ethical_guidelines:
+    type: "object"
+    properties:
+      data_privacy:
+        type: "array"
+        items:
+          type: "string"
+      behavioral_constraints:
+        type: "array"
+        items:
+          type: "string"
+      prohibited_actions:
+        type: "array"
+        items:
+          type: "string"
+    required:
+      - data_privacy
+      - behavioral_constraints
+      - prohibited_actions
+
+  alignment_tests:
+    type: "object"
+    properties:
+      pre_deployment_tests:
+        type: "array"
+        items:
+          type: "string"
+      post_deployment_tests:
+        type: "array"
+        items:
+          type: "string"
+    required:
+      - pre_deployment_tests
+      - post_deployment_tests
+
+  compliance_tracking:
+    type: "object"
+    properties:
+      enabled:
+        type: "boolean"
+      method:
+        type: "string"
+        enum: ["centralized", "decentralized"]
+      log_format:
+        type: "string"
+      did:
+        type: "string"
+        pattern: "^did:[a-z0-9]+:[a-zA-Z0-9.-]+$"
+    required:
+      - enabled
+      - method
+      - log_format
+      - did
+
+  update_protocol:
+    type: "object"
+    properties:
+      update_frequency:
+        type: "string"
+        enum: ["daily", "weekly", "monthly", "quarterly", "annually"]
+      change_management:
+        type: "array"
+        items:
+          type: "string"
+    required:
+      - update_frequency
+      - change_management
+
+required:
+  - metadata
+  - purpose_and_scope
+  - ethical_guidelines
+  - alignment_tests
+  - compliance_tracking
+  - update_protocol
