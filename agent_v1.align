@@ -1,0 +1,23 @@
+# AI Agent Alignment File (.align)
+version: 1.0
+did: "did:ethr:0x123456789abcdefghi"
+agent_scope:
+  - Respond to emails from "archana@apartresearch.com"
+purpose: "Assist with email responses while adhering to alignment policies."
+ethical_guidelines:
+  - "Ensure data privacy: do not leak personal or sensitive information."
+  - "Follow tone guidelines: maintain professional, polite, and concise language."
+alignment_tests:
+  - test_id: "test_email_privacy"
+    description: "Ensure emails do not contain sensitive leaked information."
+  - test_id: "test_response_tone"
+    description: "Verify tone consistency in responses."
+update_protocols:
+  - "If alignment file changes, conduct retesting before deployment."
+storage:
+  - ipfs_cid: "bafybeiexamplecid1234567"  # Your CID here
+blockchain:
+  - network: "Ethereum"
+  - testnet: "Rinkeby"
+notification_settings:
+  email: "owner@example.com"

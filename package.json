@@ -1,0 +1,32 @@
+{
+  "name": "ai_alignment_framework",
+  "version": "1.0.0",
+  "description": "This repository contains details of AI Alignment Framework first developed at the Apart Safety and Entrepreneurship Hackathon organised by Apart Research",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fabariagbora/AI_Alignment_Framework.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fabariagbora/AI_Alignment_Framework/issues"
+  },
+  "homepage": "https://github.com/fabariagbora/AI_Alignment_Framework#readme",
+  "dependencies": {
+    "@decentralized-identity/ion-tools": "^1.1.4",
+    "bs58": "^6.0.0",
+    "crypto-ld": "^7.0.0",
+    "dotenv": "^16.4.7",
+    "ethers": "^6.13.5",
+    "ethr-did": "^3.0.21",
+    "ethr-did-resolver": "^11.0.3",
+    "tweetnacl": "^1.0.3",
+    "web3": "^4.16.0"
+  }
+}
