@@ -1,7 +1,9 @@
+//Imports
+
 import Web3 from 'web3';
 import { createRequire } from 'module';
-import { EthrDID } from 'ethr-did';  // Make sure you're importing EthrDID correctly
-import fs from 'fs';  // Import the File System module to write to a file
+import { EthrDID } from 'ethr-did'; 
+import fs from 'fs';  
 
 // Use createRequire to import CommonJS modules
 const require = createRequire(import.meta.url);
@@ -14,15 +16,15 @@ const web3 = new Web3(infuraUrl);
 // Create a key pair using EthrDID
 const keypair = EthrDID.createKeyPair();
 
-// Create the DID instance using the key pair and Web3 provider
+// Creating the DID instance using the key pair and Web3 provider
 const did = new EthrDID({
   ...keypair,
-  provider: new Web3.providers.HttpProvider(infuraUrl),  // Use the HTTP provider here
+  provider: new Web3.providers.HttpProvider(infuraUrl),
 });
 
 console.log('DID instance:', did);  // Log the DID instance
 
-// Output the DID and metadata into a text file
+// Outputing the DID and metadata into a text file
 const didMetadata = {
   did: did.did,
   address: did.address,
@@ -31,9 +33,9 @@ const didMetadata = {
   controller: did.controller ? did.controller.address : 'N/A',
 };
 
-// Convert the metadata to a string for better formatting
+// Converting the metadata to a string for better formatting
 const didMetadataString = JSON.stringify(didMetadata, null, 2);
 
-// Output the DID metadata into a text file
+// Outputing the DID metadata into a text file
 fs.writeFileSync('did_metadata.txt', didMetadataString, 'utf-8');
 console.log('DID metadata has been saved to did_metadata.txt');
