@@ -21,7 +21,7 @@ This repository contains details of AI Alignment Framework first developed at th
 
 ## How it Works
 
-1. AI agent is responds to emails using GPT-4 model to learn of an appropriate response given information prior about myself. The appropriate response is kept aligned to my values via the alignment file which defines the purpose and scope of the AI agent
+1. AI agent responds to emails using GPT-4 model to learn of an appropriate response given prior information about myself. The appropriate response is kept aligned to my values via the alignment file which defines the purpose and scope of the AI agent
 
 2. If alignment file is updated, the AI agent is tested for compliance using the alignment values and scope to determine compliance. 
 
