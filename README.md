@@ -2,7 +2,8 @@
 
 In a post-AGI future, misaligned AI systems risk harmful consequences, especially with control over critical infrastructure. The Alignment Compliance Framework (ACF) ensures ethical AI adherence using .align files, Alignment Testing, and Decentralized Identifiers (DIDs). This scalable, decentralized system integrates alignment into development and lifecycle monitoring. ACF offers secure libraries, no-code tools for AI creation, regulatory compliance, continuous monitoring, and advisory services, promoting safer, commercially viable AI deployment.
 
-This repository contains details of AI Alignment Framework first developed at the Apart Safety and Entrepreneurship Hackathon organised by Apart Research. FInd the initailly published work here: https://www.apartresearch.com/project/align-file
+This repository contains details of AI Alignment Framework first developed at the Apart Safety and Entrepreneurship Hackathon organised by Apart Research. FInd the initailly published work [here.](https://www.apartresearch.com/project/align-file
+ "initially published on Apart's website") 
 
 ## How To Use
 
@@ -26,4 +27,5 @@ This repository contains details of AI Alignment Framework first developed at th
 
 3. A combined file called did_alignfile.txt containing the DID metadata and alignment file is uploaded to IPFS. The CID returned from IPFS is appended to the DID metadata file and alignment file. A new did_alignfile.txt is created containing the most recent information. 
 
-For more clarification, contact Fabari Agbora on LinkedIn or Twitter. 
+For more clarification, contact Fabari Agbora on [LinkedIn](https://www.linkedin.com/in/fabariagbora/ "Fabari's profile") or [Twitter.](https://x.com/fabariagbora
+ "Fabari on Twitter")
