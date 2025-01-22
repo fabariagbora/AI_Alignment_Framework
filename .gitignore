@@ -1,2 +1,8 @@
 # Ignore environment files
 .env
+node_modules
+
+# Exclude specific files or folders
+encrypt.js
+encryption_iv.txt
+encryption_key.txt
