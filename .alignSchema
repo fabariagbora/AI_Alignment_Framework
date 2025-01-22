@@ -7,15 +7,19 @@ properties:
       agent_name:
         type: "string"
       version:
-        type: "string"
-        pattern: "^[0-9]+\\.[0-9]+$"
-      created_by:
-        type: "string"
-      last_updated:
-        type: "string"
-        format: "date-time"
-      description:
-        type: "string"
+        type: "object"
+        properties:
+          number:
+            type: "string"
+            pattern: "^[0-9]+\\.[0-9]+$"
+          date:
+            type: "string"
+            format: "date-time"
+          description:
+            type: "string"
+        required:
+          - number
+          - date
       did:
         type: "string"
         pattern: "^did:[a-z0-9]+:[a-zA-Z0-9.-]+$"
@@ -86,24 +90,27 @@ properties:
       - pre_deployment_tests
       - post_deployment_tests
 
-  compliance_tracking:
+  storage:
     type: "object"
     properties:
-      enabled:
-        type: "boolean"
-      method:
+      ipfs_cid:
         type: "string"
-        enum: ["centralized", "decentralized"]
-      log_format:
-        type: "string"
-      did:
-        type: "string"
-        pattern: "^did:[a-z0-9]+:[a-zA-Z0-9.-]+$"
+        pattern: "^(bafybeiexamplecid[0-9a-z]+)$"
     required:
-      - enabled
-      - method
-      - log_format
-      - did
+      - ipfs_cid
+
+  blockchain:
+    type: "object"
+    properties:
+      network:
+        type: "string"
+        enum: ["Ethereum", "BinanceSmartChain", "Polygon"]
+      testnet:
+        type: "string"
+        enum: ["Rinkeby", "Ropsten", "Sepolia", "Goerli"]
+    required:
+      - network
+      - testnet
 
   update_protocol:
     type: "object"
@@ -124,5 +131,6 @@ required:
   - purpose_and_scope
   - ethical_guidelines
   - alignment_tests
-  - compliance_tracking
+  - storage
+  - blockchain
   - update_protocol

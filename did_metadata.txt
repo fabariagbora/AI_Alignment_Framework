@@ -1,7 +1,13 @@
 {
-  "did": "did:ethr:mainnet:0x0262cbc8501f3fc18d96b65e67845582a652cc5327db1cd6fa505109157bed3093",
-  "address": "0x7276474C56671bD8488eed903c469f8Dd9ecDf63",
+  "did": "did:ethr:mainnet:0x0318c168f76b0a5ddddea1e2c38e1d70b2da2da6c41e02169033bd36f425fe1828",
+  "address": "0xf2bB47585ccFF240314aD435f9AC0383793744B2",
   "signer": "function (data) {\n    try {\n      const signature = secp256k1.sign(sha256(data), privateKeyBytes);\n      return Promise.resolve(toJose({\n        r: leftpad(signature.r.toString(16)),\n        s: leftpad(signature.s.toString(16)),\n        recoveryParam: signature.recovery\n      }, recoverable));\n    } catch (e) {\n      return Promise.reject(e);\n    }\n  }",
   "alg": "ES256K-R",
-  "controller": "0x7276474C56671bD8488eed903c469f8Dd9ecDf63"
+  "controller": "0xf2bB47585ccFF240314aD435f9AC0383793744B2"
 }
+CID: QmSxk4YHKnyirSexFZ6SW6rswHb2Lgr2jxs9hvkHyP6nZf
+Timestamp: 1/22/2025, 3:18:01 AM
+CID: QmULPGeEckXb5k1R837AvB2GiEK4xS1RoXaCTjxjxD1e91
+Timestamp: 1/22/2025, 3:21:31 AM
+CID: QmdyEsLtR1kEEsAD4TMgAZ6EE9ooLDFmQRAb8abEj5zHif
+Timestamp: 1/22/2025, 5:01:34 AM

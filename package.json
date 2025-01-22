@@ -20,13 +20,23 @@
   "homepage": "https://github.com/fabariagbora/AI_Alignment_Framework#readme",
   "dependencies": {
     "@decentralized-identity/ion-tools": "^1.1.4",
+    "@pinata/sdk": "^2.1.0",
+    "@web3-storage/w3up-client": "^17.1.2",
+    "axios": "^1.7.9",
     "bs58": "^6.0.0",
     "crypto-ld": "^7.0.0",
     "dotenv": "^16.4.7",
     "ethers": "^6.13.5",
     "ethr-did": "^3.0.21",
     "ethr-did-resolver": "^11.0.3",
+    "form-data": "^4.0.1",
+    "ipfs-http-client": "^57.0.3",
+    "js-yaml": "^4.1.0",
     "tweetnacl": "^1.0.3",
-    "web3": "^4.16.0"
+    "web3": "^4.16.0",
+    "web3.storage": "^4.5.5"
+  },
+  "overrides": {
+    "axios": "$axios"
   }
 }

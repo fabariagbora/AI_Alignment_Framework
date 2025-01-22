@@ -1,41 +1,58 @@
-//Imports
+// Imports
+import Web3 from "web3";
+import { createRequire } from "module";
+import { EthrDID } from "ethr-did";
+import { getDecryptedKeys } from "./decrypt_keys.js";
+import fs from "fs/promises"; 
 
-import Web3 from 'web3';
-import { createRequire } from 'module';
-import { EthrDID } from 'ethr-did'; 
-import fs from 'fs';  
 
-// Use createRequire to import CommonJS modules
 const require = createRequire(import.meta.url);
 
-// Infura API key (replace with your actual API key)
-const infuraApiKey = 'efa8319ecae64f6db17897f58015bd58';  // Replace with your actual Infura API key
-const infuraUrl = `https://mainnet.infura.io/v3/${infuraApiKey}`;
-const web3 = new Web3(infuraUrl);
+(async function main() {
+  try {
+    // Retrieve decrypted keys
+    const decryptedKeys = await getDecryptedKeys();
+    const infuraApiKey = decryptedKeys["Decrypted Project ID"]; 
 
-// Create a key pair using EthrDID
-const keypair = EthrDID.createKeyPair();
+    // Set up Infura URL with the decrypted API key
+    const infuraUrl = `https://sepolia.infura.io/v3/${infuraApiKey}`;
+    const web3 = new Web3(infuraUrl);
 
-// Creating the DID instance using the key pair and Web3 provider
-const did = new EthrDID({
-  ...keypair,
-  provider: new Web3.providers.HttpProvider(infuraUrl),
-});
+    // Verify connection to Sepolia
+    const isListening = await web3.eth.net.isListening();
+    if (isListening) {
+      console.log("Connected to Sepolia successfully");
+    }
 
-console.log('DID instance:', did);  // Log the DID instance
+    // Create a key pair using EthrDID
+    const keypair = EthrDID.createKeyPair();
 
-// Outputing the DID and metadata into a text file
-const didMetadata = {
-  did: did.did,
-  address: did.address,
-  signer: did.signer.toString(),
-  alg: did.alg,
-  controller: did.controller ? did.controller.address : 'N/A',
-};
+    // Creating the DID instance using the key pair and Web3 provider
+    const did = new EthrDID({
+      ...keypair,
+      provider: new Web3.providers.HttpProvider(infuraUrl),
+      chainId: 11155111, // Specify Sepolia chain ID
+    });
 
-// Converting the metadata to a string for better formatting
-const didMetadataString = JSON.stringify(didMetadata, null, 2);
+    console.log("DID instance:", did);
 
-// Outputing the DID metadata into a text file
-fs.writeFileSync('did_metadata.txt', didMetadataString, 'utf-8');
-console.log('DID metadata has been saved to did_metadata.txt');
+    // Outputting the DID and metadata into a string
+    const didMetadata = {
+      did: did.did,
+      address: did.address,
+      signer: did.signer.toString(),
+      alg: did.alg,
+      controller: did.controller ? did.controller.address : "N/A",
+    };
+
+    console.log("DID Metadata:", JSON.stringify(didMetadata, null, 2));
+
+    // Save the metadata to a file
+    const metadataString = JSON.stringify(didMetadata, null, 2); // Pretty print JSON
+    await fs.writeFile("did_metadata.txt", metadataString, "utf-8");
+
+    console.log("DID metadata has been saved to `did_metadata.txt`");
+  } catch (error) {
+    console.error("Error:", error.message);
+  }
+})();
